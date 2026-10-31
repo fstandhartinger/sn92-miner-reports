@@ -1,0 +1,24 @@
+{
+  "surface": "app:sn92-miner-reports",
+  "items": {
+    "app": {
+      "id": "da15a7",
+      "kind": "app",
+      "title": "Miner-Feedbackberichte",
+      "summary": "Enthält Feedbackberichte für Miner mit zusammengefassten Benchmark-Ergebnissen. Jeder Bericht ist unter seiner eigenen Adresse erreichbar und erläutert die dort sichtbaren Messungen.",
+      "parent": null,
+      "url": "https://miner-reports.app.mintapis.com",
+      "selector": ".artifact-report-header .aid-app",
+      "refs": [
+        {
+          "kind": "code",
+          "target": "github:fstandhartinger/sn92-miner-reports@HEAD:generator/artifact_reports.py#L1",
+          "label": "Berichtsgenerator"
+        }
+      ],
+      "links": [],
+      "access": "public"
+    }
+  },
+  "sync_source": "artifacts.manifest.json"
+}
