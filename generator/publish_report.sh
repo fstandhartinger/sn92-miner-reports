@@ -29,7 +29,7 @@ sed -i 's#<head>#<head>\n<meta name="robots" content="noindex,nofollow">#' $SITE
 python3 -I - "$SITE/pages/$SLUG/index.html" <<'PY'
 import re,sys;p=sys.argv[1];s=open(p).read();s=re.sub(r'<header id="title-block-header">.*?</header>','',s,flags=re.S);open(p,'w').write(s)
 PY
-python3 "$(dirname "${BASH_SOURCE[0]}")/artifact_reports.py" "$SITE/pages/$SLUG/index.html" --state "$SITE/pages/.artifact-ids.json"
+python3 "$(dirname "${BASH_SOURCE[0]}")/artifact_reports.py" "$SITE/pages/$SLUG/index.html" --state "$SITE/pages/.artifact-ids.json" || echo "artifact registration skipped (registry unavailable); publishing without an id" >&2
 cp $SITE/style.css $SITE/pages/$SLUG/style.css
 (cd $SITE/pages && tar --exclude=.slugs --exclude=.artifact-ids.json --exclude=.artifact-ids.json.lock -czf - */) | REPORTS_KEY=$(cat $KEY) openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:REPORTS_KEY -out $SITE/reports.tar.gz.enc
 cd $SITE
