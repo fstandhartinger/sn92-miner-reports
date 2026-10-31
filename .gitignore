@@ -1,3 +1,5 @@
 pages/
 *.key
 .app-uuid
+
+__pycache__/
